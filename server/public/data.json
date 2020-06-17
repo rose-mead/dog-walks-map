@@ -1,0 +1,34 @@
+[
+    {
+        "description": "An easy lake loop just north of Hamilton with loads of variety for dogs. This track meanders through stands of native trees and grassed areas. A range of different maimais are dotted around the lake – from ramshackle to quite impressive!",
+        "difficulty": "easy",
+        "id": 1,
+        "location": "Horsham Downs",
+        "name": "Lake Kainui",
+        "time": "60 min"
+    },
+    {
+        "description": "This easy walk loops through one of the last remnants of kahikatea swamp forest in the region. The boardwalk winds between large kahikatea root buttresses and leads to a viewing platform perched among towering kahikatea (spooky when windy!). Aside from a relatively steep grassed slope on the way to the walk, this adventure suits all abilities.",
+        "difficulty": "easy",
+        "id": 2,
+        "location": "Te Awamutu",
+        "name": "Yarndleys Bush",
+        "time": "30-45 min"
+    },
+    {
+        "description": "Loads of murky swamps and towering eucalyptus trees to entertain the whole family. In the middle of this walk is a glade surrounded by some of the tallest eucalyptus trees in New Zealand. Plenty of fallen trunks are scattered around the glade for some serious sniffing action.",
+        "difficulty": "easy",
+        "id": 3,
+        "location": "Newstead",
+        "name": "Newstead Walkway",
+        "time": "60 min"
+    },
+    {
+        "description": "dfsa",
+        "difficulty": "dsf",
+        "id": 4,
+        "location": "d",
+        "name": "adfs",
+        "time": "asdf"
+    }
+]
