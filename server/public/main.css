@@ -1,0 +1,14 @@
+.parent-container {
+    display: flex;
+}
+
+.walk {
+    display: flex;
+}
+
+.walks-list {
+    display: flex;
+    justify-content: left;
+    width: 20%;
+
+}
