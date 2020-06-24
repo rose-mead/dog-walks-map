@@ -12,3 +12,9 @@
     width: 20%;
 
 }
+
+.mapStyles {
+    height: 400px;
+    width: 100%;
+    background-color: gray;
+}

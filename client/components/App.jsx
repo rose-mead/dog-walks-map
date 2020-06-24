@@ -2,6 +2,7 @@ import React from 'react'
 import WalksList from './WalksList'
 import Walk from './Walk'
 import data from '../../server/public/data.json'
+import MapDiv from './MapDiv'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
           <Route path='/walk/:id' component={Walk}/>
           {/* <Route path='/walk/:id' component={() => (<Walk data={data} />)} /> */}
         </div>
+        <MapDiv/>
       </>
     </Router>
 
