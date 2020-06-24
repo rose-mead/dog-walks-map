@@ -1,9 +1,10 @@
 import React from 'react'
 import request from 'superagent'
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 
 class MapDiv extends React.Component {
     state = {
+        
         locations: [{lat:-37.980, lng:175.311},{lat:-37.769, lng:175.356}, {lat:-37.677, lng:175.236}]
     }
     // -37.980780, 175.311337 yarndleys
@@ -17,11 +18,17 @@ class MapDiv extends React.Component {
 
     displayMarkers = () => {
         return this.state.locations.map((walk, index) => {
+
           return <Marker key={index} id={index} position={{
            lat: walk.lat,
            lng: walk.lng
          }}
-         onClick={() => console.log("You clicked me!")} />
+
+         onClick={() => {
+             console.log("You clicked me!")
+             <InfoWindow visible={showInfoWindow}/>
+         }}
+         />
         })
 
       }
