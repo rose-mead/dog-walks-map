@@ -10,6 +10,11 @@ class MapDiv extends React.Component {
     // -37.769881, 175.356829 newstead
     // {lat:-37.677, lng:175.236}  kainui
 
+//    mapStyles = {
+//         width: '30%',
+//         height: '30%',
+//       }
+
     displayMarkers = () => {
         return this.state.locations.map((walk, index) => {
           return <Marker key={index} id={index} position={{
@@ -27,7 +32,7 @@ class MapDiv extends React.Component {
             <Map className="mapStyles"
                 google={this.props.google}
                 zoom={9}
-                style={this.mapStyles}
+                // style={this.mapStyles}
                 initialCenter={{lat:-37.677, lng:175.236}}
                 >
                     {/* <Marker position={{lat:-37.980, lng:175.311}} />
