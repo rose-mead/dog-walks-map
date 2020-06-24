@@ -4,6 +4,7 @@
         "difficulty": "easy",
         "id": 1,
         "location": "Horsham Downs",
+        "co-ordinates": "{lat:-37.677390, lng:175.236442}",
         "name": "Lake Kainui",
         "time": "60 min"
     },
@@ -12,6 +13,7 @@
         "difficulty": "easy",
         "id": 2,
         "location": "Te Awamutu",
+        "co-ordinates": "{lat:-37.980695, lng:175.311316}",
         "name": "Yarndleys Bush",
         "time": "30-45 min"
     },
@@ -20,15 +22,11 @@
         "difficulty": "easy",
         "id": 3,
         "location": "Newstead",
+        "co-ordinates": "{lat:-37.769898, lng:175.356796}",
         "name": "Newstead Walkway",
         "time": "60 min"
     },
-    {
-        "description": "dfsa",
-        "difficulty": "dsf",
-        "id": 4,
-        "location": "d",
-        "name": "adfs",
-        "time": "asdf"
-    }
 ]
+
+
+// [, { lat: -37.769, lng: 175.356 }, { lat: -37.677, lng: 175.236 }]
