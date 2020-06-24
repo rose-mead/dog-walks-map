@@ -4,52 +4,64 @@ import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 
 class MapDiv extends React.Component {
     state = {
-        
-        locations: [{lat:-37.980, lng:175.311},{lat:-37.769, lng:175.356}, {lat:-37.677, lng:175.236}]
+        showingInfoWindow: false,
+        activeMarker: {},
+        selectedPlace: {},
+        locations: [{ lat: -37.980, lng: 175.311 }, { lat: -37.769, lng: 175.356 }, { lat: -37.677, lng: 175.236 }]
     }
-    // -37.980780, 175.311337 yarndleys
-    // -37.769881, 175.356829 newstead
-    // {lat:-37.677, lng:175.236}  kainui
 
-//    mapStyles = {
-//         width: '30%',
-//         height: '30%',
-//       }
+
+    onMarkerClick = (props, marker, e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+
+    onMapClicked = (props) => {
+        if (this.state.showingInfoWindow) {
+          this.setState({
+            showingInfoWindow: false,
+            activeMarker: null
+          })
+        }
+      };
 
     displayMarkers = () => {
         return this.state.locations.map((walk, index) => {
 
-          return <Marker key={index} id={index} position={{
-           lat: walk.lat,
-           lng: walk.lng
-         }}
-
-         onClick={() => {
-             console.log("You clicked me!")
-             <InfoWindow visible={showInfoWindow}/>
-         }}
-         />
+            return <Marker key={index} id={index} onClick={this.onMarkerClick} name={'Current location'}
+                position={{
+                    lat: walk.lat,
+                    lng: walk.lng
+                }} />
         })
-
-      }
-    
-
-    render() {
-        return (
-            <Map className="mapStyles"
-                google={this.props.google}
-                zoom={9}
-                // style={this.mapStyles}
-                initialCenter={{lat:-37.677, lng:175.236}}
-                >
-                    {/* <Marker position={{lat:-37.980, lng:175.311}} />
-                    <Marker position={{lat:-37.769, lng:175.356}} />
-                    <Marker position={{lat:-37.677, lng:175.236}} /> */}
-                    {this.displayMarkers()}
-                </Map>
-        )
     }
+
+      
+  render() {
+    return (
+      <Map  className="mapStyles"
+          zoom={9}
+          google={this.props.google}
+          onClick={this.onMapClicked}
+          initialCenter={{ lat: -37.677, lng: 175.236 }}>
+
+        {this.displayMarkers()}
+ 
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}>
+            <div>
+              <h1>{this.state.selectedPlace.name}</h1>
+            </div>
+        </InfoWindow>
+      </Map>
+    )
+  }
 }
+
+ 
 
 
 export default GoogleApiWrapper({
