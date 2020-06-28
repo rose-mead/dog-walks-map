@@ -1,5 +1,4 @@
 import React from 'react'
-import data from '../../server/public/data.json'
 import MapWalk from './MapWalk'
 import { getWalks } from '../apis/api'
 

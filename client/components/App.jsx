@@ -18,6 +18,7 @@ class App extends React.Component {
             <Route exact path='/' component={Home}/>
             
             <Route path='/walk/:id' component={Walk}/>
+            <Route path='/walk/1' component={Walk}/>
             {/* <Route path='/walk/:id' component={() => (<Walk data={data} />)} /> */}
         </div>
       </Router>
