@@ -59,12 +59,12 @@ class MapDiv extends React.Component {
 
     mapStyles = {
       width: '80%',
-      height: '80%',
+      height: '80vh',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      // margin:'50px 50px',
     }
 
-  
-
-      
   render() {
     return (
       <div className="map-div">

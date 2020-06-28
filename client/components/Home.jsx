@@ -20,15 +20,12 @@ class Home extends React.Component {
       }
 
     render(){
-        return (<>
-            <Header/>
+        return (<div className='page-main'>
             <Hero/>
             <MapDiv walks={this.state.walks}/>
 
-            <div className='parent-container'>
-                <WalksList data={this.state.walks}/>
+            <WalksList data={this.state.walks}/>
             </div>
-            </>
         )
     }
 }
