@@ -4,7 +4,7 @@ exports.up = function(knex) {
         table.increments('id').primary()
         table.string('name')
         table.string('location')
-        table.string('co-ordinates')
+        table.string('coordinates')
         table.string('time')
         table.string('difficulty')
         table.string('description')

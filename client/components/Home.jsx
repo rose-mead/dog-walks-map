@@ -23,7 +23,7 @@ class Home extends React.Component {
         return (<>
             <Header/>
             <Hero/>
-            <MapDiv/>
+            <MapDiv walks={this.state.walks}/>
 
             <div className='parent-container'>
                 <WalksList data={this.state.walks}/>
