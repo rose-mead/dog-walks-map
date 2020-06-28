@@ -38,13 +38,21 @@ class MapDiv extends React.Component {
         })
     }
 
+    mapStyles = {
+      width: '80%',
+      height: '80%',
+    }
+
       
   render() {
     return (
-      <Map  className="mapStyles"
+      <div className="map-div">
+      <Map  
+          // className="mapStyles"
           zoom={9}
           google={this.props.google}
           onClick={this.onMapClicked}
+          style={this.mapStyles}
           initialCenter={{ lat: -37.677, lng: 175.236 }}>
 
         {this.displayMarkers()}
@@ -57,6 +65,7 @@ class MapDiv extends React.Component {
             </div>
         </InfoWindow>
       </Map>
+      </div>
     )
   }
 }
