@@ -5,18 +5,18 @@ import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 
 class MapDiv extends React.Component {
 
-  getLocations = () => {
-    return this.props.walks.map(walk => {
-      return walk.coordinates
-    })
+  // getLocations = () => {
+  //   return this.props.walks.map(walk => {
+  //     return walk.coordinates
+  //   })
 
-  }
+  // }
 
     state = {
         showingInfoWindow: false,
         activeMarker: {},
-        selectedPlace: {},
-        walks: this.getLocations(),
+        selectedPlace: {walk:''},
+        // walks: this.getLocations(),
         // locations: [{ lat: -37.980, lng: 175.311 }, { lat: -37.769, lng: 175.356 }, { lat: -37.677, lng: 175.236 }],
         place: {
           description: "An easy lake loop just north of Hamilton with loads of variety for dogs. This track meanders through stands of native trees and grassed areas. A range of different maimais are dotted around the lake – from ramshackle to quite impressive!",
@@ -48,11 +48,11 @@ class MapDiv extends React.Component {
       };
 
     displayMarkers = () => {
-        return this.state.walks.map((walk, index) => {
-            return <Marker key={index} id={index} onClick={this.onMarkerClick} name={'Current location'}
+        return this.props.walks.map((walk, index) => {
+            return <Marker key={index} id={index} onClick={this.onMarkerClick} walk={walk}
                 position={{
-                    lat: walk.lat,
-                    lng: walk.lng
+                    lat: walk.coordinates.lat,
+                    lng: walk.coordinates.lng
                 }} />
         })
     }
@@ -83,9 +83,9 @@ class MapDiv extends React.Component {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
             <div>
-              <h3>{this.state.place.name}</h3>
-              <p>{this.state.place.location}</p>
-              <p>{this.state.place.time}</p>
+              <h3>{this.state.selectedPlace.walk.name}</h3>
+               <p>{this.state.selectedPlace.walk.location}</p>
+              <p>{this.state.selectedPlace.walk.time}</p>
               <a href='/#/walk/1'>View details</a>
               {/* <Link to={`/walk/${this.state.place.id}`}>View details</Link> */}
             </div>
