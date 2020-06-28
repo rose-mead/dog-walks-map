@@ -3,7 +3,7 @@ import request from 'superagent'
 import { Link, Router} from 'react-router-dom'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 
-class MapDiv extends React.Component {
+class MapWalk extends React.Component {
 
   // getLocations = () => {
   //   return this.props.walks.map(walk => {
@@ -48,13 +48,11 @@ class MapDiv extends React.Component {
       };
 
     displayMarkers = () => {
-        return this.props.walks.map((walk, index) => {
-            return <Marker key={index} id={index} onClick={this.onMarkerClick} walk={walk}
+            return <Marker  onClick={this.onMarkerClick} walk={this.props.walk}
                 position={{
-                    lat: walk.coordinates.lat,
-                    lng: walk.coordinates.lng
+                    lat: this.props.walk.coordinates.lat,
+                    lng: this.props.walk.coordinates.lng
                 }} />
-        })
     }
 
     mapStyles = {
@@ -101,5 +99,5 @@ class MapDiv extends React.Component {
 
 export default GoogleApiWrapper({
     apiKey: 'AIzaSyAKX1hkWU08ESdis7RSdoDpGi9LJXSQyjE'
-})(MapDiv);
+})(MapWalk);
 

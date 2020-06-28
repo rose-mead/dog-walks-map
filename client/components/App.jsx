@@ -15,7 +15,7 @@ class App extends React.Component {
         <div className='wrapper'>
             <Header/>
 
-            <Route path='/' component={Home}/>
+            <Route exact path='/' component={Home}/>
             
             <Route path='/walk/:id' component={Walk}/>
             {/* <Route path='/walk/:id' component={() => (<Walk data={data} />)} /> */}
