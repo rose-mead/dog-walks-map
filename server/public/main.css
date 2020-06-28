@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    font-family: 'Karla', sans-serif;
+}
+
 .parent-container {
     display: flex;
 }
@@ -13,8 +18,80 @@
 
 }
 
-.mapStyles {
-    height: 200px!important;
-    width: 50%!important;
+.map-div {
+    text-align: center;
+    background-color: blue;
+    height: 80vh;
+}
+
+/* .mapStyles {
+    height: 150px;
+    width: 80%!important;
+    background-color: gray;
+} */
+
+.header {
+    width:100%;
+    height:4rem;
+    background-color:green
+}
+
+.hero {
+    width: 100%;
+    height: 40vh;
     background-color: gray;
 }
+
+.welcome {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+
+
+
+
+/* From Charlottes web example */
+/* 
+.body-container {
+    display: flex;
+  }
+  
+  .header {
+    margin-bottom: 2em;
+    text-align: center;
+  }
+  
+  .footer {
+    margin-top: 4em;
+    text-align: center;
+  }
+  
+  /* Posts */
+/*   
+  .posts .date,
+  .posts .comment-count {
+    color: gray;
+  }
+  
+  
+  .recent-entries {
+    margin-top: 4em;
+    margin-left: 2em;
+    flex-basis: 20%;
+  }
+  
+  .recent-entries header {
+    font-weight: bold;
+  }
+  
+  .recent-entries ul {
+    margin-left: -2em;
+  }
+  
+  .recent-entries li {
+    list-style: none;
+    margin-bottom: 1em;
+  }
+   */
