@@ -59,6 +59,20 @@ nav {
     padding-bottom:5vh;
 }
 
+ul {
+  margin-top: 50px;
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 5px;
+}
+
+.walks-list {
+ padding: 10%;
+}
+
 /* .mapStyles {
     height: 150px;
     width: 80%!important;
