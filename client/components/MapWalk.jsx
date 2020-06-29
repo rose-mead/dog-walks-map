@@ -50,7 +50,7 @@ class MapWalk extends React.Component {
     displayMarkers = () => {
             return <Marker  onClick={this.onMarkerClick} walk={this.props.walk}
                 position={{
-                    lat: this.state.walk.coordinates.lat,
+                    lat: this.props.walk.coordinates.lat,
                     lng: this.props.walk.coordinates.lng
                 }} />
     }

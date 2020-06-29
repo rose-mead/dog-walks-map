@@ -1,46 +1,57 @@
 import React from 'react'
 import MapWalk from './MapWalk'
-import { getWalks } from '../apis/api'
+import { getWalks, getWalk } from '../apis/api'
+import { Link } from 'react-router-dom'
 
 
 
-import { HashRouter as Router, Route, Link } from 'react-router-dom'
+
 
 class Walk extends React.Component {
 
   state = {
     walks: [],
-    walk: {id:43}
+    walk: {}
   }
-
-  id = this.props.match.params.id
 
   componentDidMount() {
-    getWalks()
-      .then(walks => {
-        this.setState({ walks: walks })
-
-        return walks.find(walk => {
-          return walk.id == this.id
+    getWalk(this.props.match.params.id)
+      .then(walk => {
+        this.setState({
+          walk: walk
         })
       })
-      .then(walk => {
-        this.setState({ walk: walk })
-      })
+
   }
 
+  findWalk = () => {
+    return this.props.walks.filter(walk => walk.id == this.props.match.params.id)
+  }
 
-  // currentWalk = data.find(walk => walk.id == this.id)
+  // id = this.props.match.params.id
 
-  // currentWalk = this.state.walks.find(walk => walk.id == this.id)
-  // currentWalk = this.state.walks
+  // componentDidMount() {
+  //   getWalks()
+  //     .then(walks => {
+  //       this.setState({ walks: walks })
 
-  // walksDiv = () => {
-  //  return  <h3>{this.state.walks.find(walk => walk.id == this.id).id}</h3>
+  //       return walks.find(walk => {
+  //         return walk.id == this.id
+  //       })
+  //     })
+  //     .then(walk => {
+  //       this.setState({ walk: walk })
+  //     })
   // }
+
+
+  // Could access the current walk from props - but it wasn't loading
+  // console.log(this.props.walks.filter(walk => walk.id == this.props.match.params.id))
 
   render() {
     return <div className='walk'>
+      <MapWalk walk={this.state.walk}/>
+
       <ul>
         <h3>{this.state.walk.name}</h3>
         <li>{this.state.walk.description}</li>
@@ -48,14 +59,13 @@ class Walk extends React.Component {
         <li>{this.state.walk.time}</li>
 
       </ul>
-      <MapWalk walk={this.state.walk}/>
-
+      <Link to={'/'}>Home</Link>
     </div>
-
   }
 }
 
-export default Walk
+
+  export default Walk
 
 
 

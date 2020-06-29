@@ -5,3 +5,10 @@ export function getWalks() {
     .get('/walks')
     .then(response => response.body)
 }
+
+
+export function getWalk(id) {
+    return request
+    .get(`/walk/${id}`)
+    .then(response => response.body)
+}

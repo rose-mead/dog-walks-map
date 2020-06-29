@@ -13,6 +13,15 @@ function getWalks(db = connection) {
     })
 }
 
+function getWalk(id, db = connection) {
+    return db('walks').where('id', id).first()
+    .then(walk => {
+        walk.coordinates = JSON.parse(walk.coordinates)
+        return walk
+    })
+}
+
 module.exports = {
-    getWalks
+    getWalks, 
+    getWalk
 }

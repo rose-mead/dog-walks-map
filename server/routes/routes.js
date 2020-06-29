@@ -6,8 +6,14 @@ const router = express.Router()
 router.get('/walks', (req, res) => {
     db.getWalks()
     .then(walks => {
-        console.log(walks)
         res.json(walks)
+    })
+})
+
+router.get('/walk/:id', (req, res) => {
+    db.getWalk(req.params.id)
+    .then(walk => {
+        res.json(walk)
     })
 })
 
