@@ -12,3 +12,6 @@ https://www.npmjs.com/package/google-maps-react
 https://stackoverflow.com/questions/53615413/how-to-add-a-button-in-infowindow-with-google-maps-react
 
 https://stackoverflow.com/questions/48234933/link-in-infobox-using-react-google-maps-causes-page-reload
+
+
+https://github.com/ReactTraining/react-router/issues/4105
