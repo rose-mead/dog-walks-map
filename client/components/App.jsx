@@ -31,7 +31,7 @@ class App extends React.Component {
         <div className='wrapper'>
             <Header/>
 
-            <Route exact path='/' component={() => (<Home walks={this.state.walks} />)}/>
+            <Route exact path='/' component={() => (<Home />)}/>
             
             {/* <Route path='/walk/:id' component={Walk}/> */}
             {/* <Route path='/walk/:id' component={Walk}/> */}

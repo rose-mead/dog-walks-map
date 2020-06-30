@@ -15,3 +15,6 @@ https://stackoverflow.com/questions/48234933/link-in-infobox-using-react-google-
 
 
 https://github.com/ReactTraining/react-router/issues/4105
+
+
+https://docs.redux.io/premium/google-maps.html

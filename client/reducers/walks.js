@@ -1,19 +1,13 @@
-import { ADD_WALK, SAVE_WALKS } from '../actions/action'
+import { ADD_WALK, SAVE_WALKS,} from '../actions/action'
 
-const initialState = {
-    walks: [{name:'Kainui'}, {name:'Yarndleys'}, {name:'Newstead'}]
-}
+const initialState = [{id: 1, name:'Kainui'}, {id: 2, name:'Yarndleys'}, {id: 3, name:'Newstead'}]
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_WALK:
-            return {
-                walks: [...state.walks, action.walk]
-            }
+            return  [...state.walks, action.walk]
         case SAVE_WALKS:
-            return {
-                walks: action.walks
-            }
+            return  action.walks
         default: 
             return state
     }
