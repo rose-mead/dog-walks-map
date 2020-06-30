@@ -3,10 +3,6 @@ import MapWalk from './MapWalk'
 import { getWalks, getWalk } from '../apis/api'
 import { Link } from 'react-router-dom'
 
-
-
-
-
 class Walk extends React.Component {
 
   state = {
@@ -50,7 +46,6 @@ class Walk extends React.Component {
 
   render() {
     return <div className='walk'>
-      <MapWalk walk={this.state.walk}/>
 
       <ul>
         <h3>{this.state.walk.name}</h3>

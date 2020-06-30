@@ -3,6 +3,8 @@ import request from 'superagent'
 import { Link, Router, Route, Redirect } from 'react-router-dom'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 import Walk from './walk'
+import { connect } from 'react-redux'
+import { selectedWalk, pageView } from '../actions/action'
 
 class MapWalks extends React.Component {
 
@@ -10,23 +12,18 @@ class MapWalks extends React.Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: { walk: '' },
-    place: {
-      description: "An easy lake loop just north of Hamilton with loads of variety for dogs. This track meanders through stands of native trees and grassed areas. A range of different maimais are dotted around the lake – from ramshackle to quite impressive!",
-      difficulty: "easy",
-      id: 1,
-      location: "Horsham Downs",
-      name: "Lake Kainui",
-      time: "60 min"
-    }
   }
 
 
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
+  
+    this.props.dispatch(selectedWalk(props.walk))
+  }
 
   onMapClicked = (props) => {
     if (this.state.showingInfoWindow) {
@@ -56,8 +53,13 @@ class MapWalks extends React.Component {
     marginRight: 'auto',
   }
 
+  handleClick = () => {
+    console.log('clicked')
+    this.setState({pageView:true})
+    this.props.dispatch(pageView('profile'))
+  }
+
   render() {
-    { console.log('Render') }
 
     return (
       <div className="map-div">
@@ -71,20 +73,26 @@ class MapWalks extends React.Component {
           // onClick={this.onMapClicked}
           style={this.mapStyles}
           initialCenter={{ lat: -37.677, lng: 175.236 }}>
-          {/* // center={this.state.place} */}
 
           {this.displayMarkers()}
 
           <InfoWindow 
             marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}>
+            visible={this.state.showingInfoWindow}
+            options={{enableEventPropagation:true}}
+            handleClick={this.handleClick}
+            
+            >
             <div>
               <h3>{this.state.selectedPlace.walk.name}</h3>
               <p>{this.state.selectedPlace.walk.location}</p>
               <p>{this.state.selectedPlace.walk.time}</p>
+              {/* <button onClick={this.props.handleClick}>View details</button> */}
+              
 
-              {/* <Link to={`/walk/${this.state.selectedPlace.walk.id}`}>View details</Link> */}
-              <a href={`/#/walk/${this.state.selectedPlace.walk.id}`}>View details</a>
+
+              {/* <Link to={`/walk/${this.props.selectedWalk.id}`}>View details</Link> */}
+              {/* <a href={`/#/walk/${this.state.selectedPlace.walk.id}`}>View details</a> */}
             </div>
           </InfoWindow>
         </Map>
@@ -97,7 +105,16 @@ class MapWalks extends React.Component {
 
 
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAKX1hkWU08ESdis7RSdoDpGi9LJXSQyjE'
-})(MapWalks);
 
+function mapStateToProps(globalState) {
+  return {
+    walks: globalState.walks,
+    selectedWalk: globalState.selectedWalk,
+    pageView: globalState.pageView
+  }
+}
+
+  export default GoogleApiWrapper({
+    apiKey: 'AIzaSyAKX1hkWU08ESdis7RSdoDpGi9LJXSQyjE'
+  })
+  (connect(mapStateToProps)(MapWalks));

@@ -12,9 +12,9 @@ class Home extends React.Component {
     render(){
         return (<div className='page-main'>
             <Hero/>
-            <MapWalks walks={this.props.walks}/>
+            <MapWalks />
 
-            <WalksList data={this.props.walks}/>
+            <WalksList />
             </div>
         )
     }

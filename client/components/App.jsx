@@ -6,6 +6,8 @@ import Home from './Home'
 import Hero from './hero'
 import Header from './header'
 import { getWalks } from '../apis/api'
+import { connect } from 'react-redux'
+import { saveWalks } from '../actions/action'
 
 
 class App extends React.Component {
@@ -18,6 +20,7 @@ class App extends React.Component {
     getWalks()
     .then(walks => {
       this.setState({walks:walks})
+      this.props.dispatch(saveWalks(walks))
     })
   }
  
@@ -28,7 +31,7 @@ class App extends React.Component {
         <div className='wrapper'>
             <Header/>
 
-            <Route exact path='/' component={() => (<Home walks={this.state.walks} />)}/>
+            <Route exact path='/' component={() => (<Home />)}/>
             
             {/* <Route path='/walk/:id' component={Walk}/> */}
             {/* <Route path='/walk/:id' component={Walk}/> */}
@@ -39,4 +42,11 @@ class App extends React.Component {
   }
 }
 
-export default App
+
+function mapStateToProps(globalState) {
+  return {
+    walks: globalState.walks
+  }
+}
+
+export default connect(mapStateToProps)(App)
