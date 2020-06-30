@@ -3,10 +3,6 @@ import MapWalk from './MapWalk'
 import { getWalks, getWalk } from '../apis/api'
 import { Link } from 'react-router-dom'
 
-
-
-
-
 class Walk extends React.Component {
 
   state = {

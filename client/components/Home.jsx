@@ -15,6 +15,7 @@ class Home extends React.Component {
             <MapWalks walks={this.props.walks}/>
 
             <WalksList data={this.props.walks}/>
+            {/* {console.log(this.props.walks)} */}
             </div>
         )
     }
