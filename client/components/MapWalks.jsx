@@ -4,7 +4,7 @@ import { Link, Router, Route, Redirect } from 'react-router-dom'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 import Walk from './walk'
 import { connect } from 'react-redux'
-import { selectedWalk } from '../actions/action'
+import { selectedWalk, pageView } from '../actions/action'
 
 class MapWalks extends React.Component {
 
@@ -53,8 +53,13 @@ class MapWalks extends React.Component {
     marginRight: 'auto',
   }
 
+  handleClick = () => {
+    console.log('clicked')
+    this.setState({pageView:true})
+    this.props.dispatch(pageView('profile'))
+  }
+
   render() {
-    { console.log('Render') }
 
     return (
       <div className="map-div">
@@ -73,14 +78,21 @@ class MapWalks extends React.Component {
 
           <InfoWindow 
             marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}>
+            visible={this.state.showingInfoWindow}
+            options={{enableEventPropagation:true}}
+            handleClick={this.handleClick}
+            
+            >
             <div>
               <h3>{this.state.selectedPlace.walk.name}</h3>
               <p>{this.state.selectedPlace.walk.location}</p>
               <p>{this.state.selectedPlace.walk.time}</p>
+              {/* <button onClick={this.props.handleClick}>View details</button> */}
+              
 
-              {/* <Link to={`/walk/${this.state.selectedPlace.walk.id}`}>View details</Link> */}
-              <a href={`/#/walk/${this.state.selectedPlace.walk.id}`}>View details</a>
+
+              {/* <Link to={`/walk/${this.props.selectedWalk.id}`}>View details</Link> */}
+              {/* <a href={`/#/walk/${this.state.selectedPlace.walk.id}`}>View details</a> */}
             </div>
           </InfoWindow>
         </Map>
@@ -97,7 +109,8 @@ class MapWalks extends React.Component {
 function mapStateToProps(globalState) {
   return {
     walks: globalState.walks,
-    selectedWalk: globalState.selectedWalk
+    selectedWalk: globalState.selectedWalk,
+    pageView: globalState.pageView
   }
 }
 
