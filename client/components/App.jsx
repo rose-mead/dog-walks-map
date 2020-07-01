@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import { saveWalks } from '../actions/action'
 import MapWalks from './MapWalks'
 import WalksList from './WalksList'
+import MyMap from './MyMap'
 
 
 class App extends React.Component {
@@ -30,6 +31,7 @@ class App extends React.Component {
         <div className='wrapper'>
             <Header/>
             <Hero/>
+            {/* <MyMap/> */}
             <MapWalks />
             {this.props.pageView == 'profile' ? <Walk/> : <WalksList/>}
 
