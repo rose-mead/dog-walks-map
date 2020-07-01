@@ -5,7 +5,7 @@ import Hero from './hero'
 import Header from './header'
 import { getWalks } from '../apis/api'
 import { connect } from 'react-redux'
-import { saveWalks } from '../actions/action'
+import { fetchWalks } from '../actions/action'
 import MapWalks from './MapWalks'
 import WalksList from './WalksList'
 import MyMap from './MyMap'
@@ -18,11 +18,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    getWalks()
-    .then(walks => {
-      this.setState({walks:walks})
-      this.props.dispatch(saveWalks(walks))
-    })
+    // getWalks()
+    // .then(walks => {
+    //   this.setState({walks:walks})
+      this.props.dispatch(fetchWalks())
+    // })
+
   }
 
   render() {
