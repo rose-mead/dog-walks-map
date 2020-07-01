@@ -79,6 +79,15 @@ li {
     background-color: gray;
 } */
 
+.walk {
+  padding: 25px;
+  margin: 25px;
+}
+
+.walk-details p{
+  display:inline-block;
+  margin-right: 10px;
+}
 
 
 .hero {
