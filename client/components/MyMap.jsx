@@ -1,5 +1,3 @@
-
-
 import React, { Component } from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { Marker } from '@react-google-maps/api';
@@ -19,24 +17,12 @@ const center = {
   lng: 175.236,
 }
 
-const position = {
-  lat: -37.677,
-  lng: 175.236,
-}
-
-const newPosition = {
-  lat: -37.769898,
-  lng: 175.356796,
-}
-
-const divStyle = {
+const infoWindowStyle = {
   background: `white`,
   padding: 15,
   textAlign: 'center',
   padding: '10px',
-
 }
-
 
 class MyMap extends Component {
 
@@ -47,11 +33,11 @@ class MyMap extends Component {
     markers: [],
     marker: {}
   }
-  
+
   onLoad = marker => {
-      console.log('marker: ', marker)
-      this.setState({marker: marker})
-    }
+    console.log('marker: ', marker)
+    this.setState({ marker: marker })
+  }
 
   onMarkerClick = (walk, props, e) => {
     this.setState({
@@ -59,9 +45,9 @@ class MyMap extends Component {
       // activeMarker: marker,
       showingInfoWindow: true
     })
-  
-    
-  
+
+
+
     this.props.dispatch(selectedWalk(walk))
     // this.props.dispatch(pageView('profile'))
 
@@ -74,8 +60,7 @@ class MyMap extends Component {
         showingInfoWindow: false,
         activeMarker: null,
       })
-    // this.props.dispatch(pageView('home'))
-
+      // this.props.dispatch(pageView('home'))
     }
   }
 
@@ -88,14 +73,26 @@ class MyMap extends Component {
 
   displayMarkers = () => {
     return this.props.walks.map((walk, index) => {
-      // console.log(walk)
-        return <Marker key={index} id={index} onLoad={this.onLoad} onClick={()=>this.onMarkerClick(walk)} walk={walk}
-          position={walk.coordinates} />
-      })
+      return <Marker key={index} id={index} onLoad={this.onLoad} onClick={() => this.onMarkerClick(walk)} walk={walk}
+        position={walk.coordinates} />
+    })
+  }
+
+  displayInfoWindow = () => {
+    return <InfoWindow
+      position={this.currentPosition()}
+      visible={this.state.showingInfoWindow}
+      selectedWalk={this.props.selectedWalk.name}
+    >
+      <div style={infoWindowStyle}>
+        <h3>{this.props.selectedWalk.name}</h3>
+        <p>{this.props.selectedWalk.location}</p>
+        <Link to={`/walk/${this.props.selectedWalk.id}`}>View details</Link>
+      </div>
+    </InfoWindow>
   }
 
   render() {
-    console.log('render')
     return (
       <LoadScript
         googleMapsApiKey="AIzaSyAKX1hkWU08ESdis7RSdoDpGi9LJXSQyjE"
@@ -106,27 +103,13 @@ class MyMap extends Component {
           zoom={10}
           onClick={this.onMapClicked}
         >
+
           { /* Child components, such as markers, info windows, etc. */}
-          
+
           {this.props.walks && this.displayMarkers()}
 
-          {/* {this.showingInfoWindow && this.displayInfoWindow()} */}
-          {this.state.showingInfoWindow && <InfoWindow
-            position={this.currentPosition()}
+          {this.state.showingInfoWindow && this.displayInfoWindow()}
 
-            visible={this.state.showingInfoWindow}
-            selectedWalk={this.props.selectedWalk.name}
-          >
-            <div style={divStyle}>
-              <h3>{this.props.selectedWalk.name}</h3>
-              <p>{this.props.selectedWalk.location}</p>
-              <Link to={`/walk/${this.props.selectedWalk.id}`}>View details</Link>
-            {console.log(this.props.selectedWalk.coordinates)}
-            </div>
-          </InfoWindow>}
-          {/* {this.displayInfoWindow()} */}
-
-          
           <></>
         </GoogleMap>
       </LoadScript>
@@ -144,4 +127,4 @@ function mapStateToProps(globalState) {
 }
 
 export default React.memo
-(connect(mapStateToProps)(MyMap))
+  (connect(mapStateToProps)(MyMap))
