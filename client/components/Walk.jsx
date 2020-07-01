@@ -2,6 +2,7 @@ import React from 'react'
 import MapWalk from './MapWalk'
 import { getWalks, getWalk } from '../apis/api'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class Walk extends React.Component {
 
@@ -10,18 +11,18 @@ class Walk extends React.Component {
     walk: {}
   }
 
-  componentDidMount() {
-    getWalk(this.props.match.params.id)
-      .then(walk => {
-        this.setState({
-          walk: walk
-        })
-      })
+  // componentDidMount() {
+  //   getWalk(this.props.match.params.id)
+  //     .then(walk => {
+  //       this.setState({
+  //         walk: walk
+  //       })
+  //     })
 
-  }
+  // }
 
   findWalk = () => {
-    return this.props.walks.filter(walk => walk.id == this.props.match.params.id)
+    // return this.props.walks.filter(walk => walk.id == this.props.match.params.id)
   }
 
   // id = this.props.match.params.id
@@ -48,10 +49,10 @@ class Walk extends React.Component {
     return <div className='walk'>
 
       <ul>
-        <h3>{this.state.walk.name}</h3>
-        <li>{this.state.walk.description}</li>
-        <li>{this.state.walk.location}</li>
-        <li>{this.state.walk.time}</li>
+        <h3>{this.props.walk.name}</h3>
+        <li>{this.props.walk.description}</li>
+        <li>{this.props.walk.location}</li>
+        <li>{this.props.walk.time}</li>
 
       </ul>
       <Link to={'/'}>Home</Link>
@@ -60,7 +61,14 @@ class Walk extends React.Component {
 }
 
 
-  export default Walk
+function mapStateToProps(globalState) {
+  return {
+    walk: globalState.selectedWalk,
+  }
+}
+
+export default connect(mapStateToProps)(Walk)
+
 
 
 
