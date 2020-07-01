@@ -8,6 +8,10 @@ router.get('/walks', (req, res) => {
     .then(walks => {
         res.json(walks)
     })
+    .catch(err => {
+        console.error(err)
+        res.status(500).json({ message: 'It broke' })
+      })
 })
 
 router.get('/walk/:id', (req, res) => {
@@ -15,6 +19,23 @@ router.get('/walk/:id', (req, res) => {
     .then(walk => {
         res.json(walk)
     })
+    .catch(err => {
+        console.error(err)
+        res.status(500).json({ message: 'It broke' })
+      })
+})
+
+router.get('/search/:difficulty', (req, res) => {
+    db.getSearchResults(req.params.difficulty)
+    .then(walk => {
+        res.json(walk)
+        console.log('in routes', walk);
+        
+    })
+    .catch(err => {
+        console.error(err)
+        res.status(500).json({ message: 'It broke' })
+      })
 })
 
 

@@ -12,3 +12,12 @@ export function getWalk(id) {
     .get(`/walk/${id}`)
     .then(response => response.body)
 }
+
+export function searchWalks(difficulty) {
+    return request
+    .get(`/search/${difficulty}`)
+    .then(response => {
+        console.log('in api', response)
+        return response.body
+    })
+}

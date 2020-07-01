@@ -35,7 +35,7 @@ exports.seed = function(knex) {
           location: 'Newstead', 
           coordinates: '{"lat":-37.769898, "lng":175.356796}',
           time: '60 min', 
-          difficulty: 'easy', 
+          difficulty: 'hard', 
           description: 'Loads of murky swamps and towering eucalyptus trees to entertain the whole family. In the middle of this walk is a glade surrounded by some of the tallest eucalyptus trees in New Zealand. Plenty of fallen trunks are scattered around the glade for some serious sniffing action.'
         }
       ]);

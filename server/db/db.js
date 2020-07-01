@@ -21,7 +21,19 @@ function getWalk(id, db = connection) {
     })
 }
 
+function getSearchResults(difficulty, db = connection) {
+    return db('walks').where('difficulty', difficulty)
+    .then(walks => {
+        return walks.map(walk => {
+            walk.coordinates = JSON.parse(walk.coordinates)
+            console.log("in DB func", walk)
+            return walk
+        })
+    })
+}
+
 module.exports = {
     getWalks, 
-    getWalk
+    getWalk,
+    getSearchResults
 }

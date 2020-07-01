@@ -10,6 +10,7 @@ import MapWalks from './MapWalks'
 import WalksList from './WalksList'
 import MyMap from './MyMap'
 import Home from './Home'
+import Form from './Form'
 
 
 class App extends React.Component {
@@ -24,13 +25,17 @@ class App extends React.Component {
 
   }
 
+
   render() {
     return (
-      <Router>
+      <Router> 
         <div className='wrapper'>
             <Header/>
             <MyMap/>
+            <Form/>
+
             <Route exact path='/' component={Home} />
+           
 
             {/* {this.props.pageView == 'profile' ? <Walk/> : <WalksList/>} */}
             {/* <Route exact path='/' component={() => (<Home />)}/> */}
