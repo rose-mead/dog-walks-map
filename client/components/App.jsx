@@ -9,6 +9,7 @@ import { fetchWalks } from '../actions/action'
 import MapWalks from './MapWalks'
 import WalksList from './WalksList'
 import MyMap from './MyMap'
+import Home from './Home'
 
 
 class App extends React.Component {
@@ -18,11 +19,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // getWalks()
-    // .then(walks => {
-    //   this.setState({walks:walks})
+
       this.props.dispatch(fetchWalks())
-    // })
 
   }
 
@@ -31,13 +29,10 @@ class App extends React.Component {
       <Router>
         <div className='wrapper'>
             <Header/>
-            <Hero/>
-            {/* <MyMap/> */}
-            {/* <MapWalks /> */}
-            {this.props.pageView == 'profile' ? <Walk/> : <WalksList/>}
+            <MyMap/>
+            <Route exact path='/' component={Home} />
 
-            <Route path='/walk/mymap' component={MyMap} />
-
+            {/* {this.props.pageView == 'profile' ? <Walk/> : <WalksList/>} */}
             {/* <Route exact path='/' component={() => (<Home />)}/> */}
             {/* <Route path='/walk/:id' component={Walk}/> */}
             {/* <Route path='/walk/:id' component={Walk}/> */}

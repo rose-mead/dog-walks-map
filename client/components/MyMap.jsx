@@ -35,7 +35,7 @@ class MyMap extends Component {
   }
 
   onLoad = marker => {
-    console.log('marker: ', marker)
+    // console.log('marker: ', marker)
     this.setState({ marker: marker })
   }
 
