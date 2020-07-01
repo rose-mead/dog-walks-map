@@ -19,7 +19,7 @@
 //       activeMarker: marker,
 //       showingInfoWindow: true
 //     });
-  
+
 //     this.props.dispatch(selectedWalk(props.walk))
 //     this.props.dispatch(pageView('profile'))
 
@@ -46,7 +46,7 @@
 //     })
 //   }
 
- 
+
 
 //   mapStyles = {
 //     width: '80%',
@@ -81,7 +81,7 @@
 //             visible={this.state.showingInfoWindow}
 //             options={{enableEventPropagation:true}}
 //             handleClick={this.handleClick}
-            
+
 //             >
 //             <div>
 //               <h3>{this.state.selectedPlace.walk.name}</h3>
@@ -89,7 +89,7 @@
 //               {/* <a href='/#/walk/1'>View details</a> */}
 
 //               <p>{this.state.selectedPlace.walk.time}</p>
-              
+
 //               {/* <Link to={`/walk/${this.props.selectedWalk.id}`}>View details</Link> */}
 //               {/* <a href={`/#/walk/${this.state.selectedPlace.walk.id}`}>View details</a> */}
 //             </div>
@@ -120,50 +120,88 @@
 
 
 
+import React, { Component } from 'react';
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { Marker } from '@react-google-maps/api';
+import { InfoWindow } from '@react-google-maps/api';
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 
-import React from 'react'
-import { GoogleMap, LoadScript } from '@react-google-maps/api'
- 
+
+
 const containerStyle = {
-  width: '400px',
+  width: '100%',
   height: '400px'
 };
- 
+
 const center = {
-  lat: -3.745,
-  lng: -38.523
-};
- 
-function MyMap() {
-  const [map, setMap] = React.useState(null)
- 
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds();
-    map.fitBounds(bounds);
-    setMap(map)
-  }, [])
- 
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
- 
-  return (
-    <LoadScript
-      googleMapsApiKey="AIzaSyAKX1hkWU08ESdis7RSdoDpGi9LJXSQyjE"
-    >
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
-      >
-        { /* Child components, such as markers, info windows, etc. */ }
-        <></>
-      </GoogleMap>
-    </LoadScript>
-  )
+  lat: -37.677,
+  lng: 175.236,
 }
- 
-export default React.memo(MyMap)
+
+const position = {
+  lat: -37.677,
+  lng: 175.236,
+}
+
+const onLoad = marker => {
+  console.log('marker: ', marker)
+}
+
+const divStyle = {
+  background: `white`,
+  padding: 15,
+  textAlign: 'center',
+  padding: '10px',
+
+}
+
+class MyMap extends Component {
+  render() {
+    return (
+      <LoadScript
+        googleMapsApiKey="AIzaSyAKX1hkWU08ESdis7RSdoDpGi9LJXSQyjE"
+      >
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={10}
+        >
+          { /* Child components, such as markers, info windows, etc. */}
+          <Marker
+            onLoad={onLoad}
+            position={position}
+          />
+
+          <InfoWindow
+            onLoad={onLoad}
+            position={position}
+            selectedWalk={this.props.selectedWalk.name}
+          >
+            <div style={divStyle}>
+              <h3>{this.props.selectedWalk.name}</h3>
+              <p>{this.props.selectedWalk.location}</p>
+              <Link to={`/walk/${this.props.selectedWalk.id}`}>View details</Link>
+
+            </div>
+          </InfoWindow>
+          {console.log(this.props.selectedWalk.name)}
+          <></>
+        </GoogleMap>
+      </LoadScript>
+    )
+  }
+}
+
+// export default React.memo(MyMap)
+function mapStateToProps(globalState) {
+  return {
+    walks: globalState.walks,
+    selectedWalk: globalState.selectedWalk,
+    pageView: globalState.pageView
+  }
+}
+
+export default React.memo
+(connect(mapStateToProps)(MyMap));

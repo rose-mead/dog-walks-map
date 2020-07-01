@@ -33,9 +33,10 @@ class App extends React.Component {
             <Header/>
             <Hero/>
             {/* <MyMap/> */}
-            <MapWalks />
+            {/* <MapWalks /> */}
             {this.props.pageView == 'profile' ? <Walk/> : <WalksList/>}
 
+            <Route path='/walk/mymap' component={MyMap} />
 
             {/* <Route exact path='/' component={() => (<Home />)}/> */}
             {/* <Route path='/walk/:id' component={Walk}/> */}

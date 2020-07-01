@@ -102,7 +102,9 @@ li {
 
 
 
-
+.gm-style .gm-style-iw-t::after {
+  transform: translate(-50%,-60%) rotate(-45deg);
+}
 
 
 
