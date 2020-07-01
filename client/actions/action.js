@@ -1,7 +1,10 @@
+import { getWalks } from "../apis/api"
+
 export const ADD_WALK = 'ADD_WALK'
 export const SAVE_WALKS = 'SAVE_WALKS'
 export const SELECTED_WALK = 'SELECTED_WALK'
 export const NAVIGATE = 'NAVIGATE'
+
 
 
 export function addWalk(walk) {
@@ -30,4 +33,14 @@ export function pageView(target) {
         type: 'NAVIGATE',
         target: target
     }
+}
+
+export function fetchWalks() {
+    return dispatch => {
+        getWalks()
+        .then(walks => {
+            dispatch(saveWalks(walks))
+        })
+    }
+    
 }

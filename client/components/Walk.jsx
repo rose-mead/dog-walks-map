@@ -2,6 +2,7 @@ import React from 'react'
 import MapWalk from './MapWalk'
 import { getWalks, getWalk } from '../apis/api'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class Walk extends React.Component {
 
@@ -10,57 +11,34 @@ class Walk extends React.Component {
     walk: {}
   }
 
-  componentDidMount() {
-    getWalk(this.props.match.params.id)
-      .then(walk => {
-        this.setState({
-          walk: walk
-        })
-      })
-
-  }
-
-  findWalk = () => {
-    return this.props.walks.filter(walk => walk.id == this.props.match.params.id)
-  }
-
-  // id = this.props.match.params.id
-
-  // componentDidMount() {
-  //   getWalks()
-  //     .then(walks => {
-  //       this.setState({ walks: walks })
-
-  //       return walks.find(walk => {
-  //         return walk.id == this.id
-  //       })
-  //     })
-  //     .then(walk => {
-  //       this.setState({ walk: walk })
-  //     })
-  // }
-
-
-  // Could access the current walk from props - but it wasn't loading
-  // console.log(this.props.walks.filter(walk => walk.id == this.props.match.params.id))
 
   render() {
-    return <div className='walk'>
+    return (
+      <div className='walk'>
+        <h3>{this.props.walk.name}</h3>
+        <p>{this.props.walk.location}</p>
 
-      <ul>
-        <h3>{this.state.walk.name}</h3>
-        <li>{this.state.walk.description}</li>
-        <li>{this.state.walk.location}</li>
-        <li>{this.state.walk.time}</li>
+        <div className='walk-details'>
+          <p>Time: {this.props.walk.time}</p>
+          <p>Difficulty: {this.props.walk.difficulty}</p>
+        </div>
+        <p>{this.props.walk.description}</p>
 
-      </ul>
-      <Link to={'/'}>Home</Link>
-    </div>
+        <Link to={'/'}>Home</Link>
+      </div>
+    )
   }
 }
 
 
-  export default Walk
+function mapStateToProps(globalState) {
+  return {
+    walk: globalState.selectedWalk,
+  }
+}
+
+export default connect(mapStateToProps)(Walk)
+
 
 
 

@@ -1,13 +1,14 @@
 import React from 'react'
 import Walk from './Walk'
-import data from '../../server/public/data.json'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
-import Home from './Home'
 import Hero from './hero'
 import Header from './header'
 import { getWalks } from '../apis/api'
 import { connect } from 'react-redux'
-import { saveWalks } from '../actions/action'
+import { fetchWalks } from '../actions/action'
+import MapWalks from './MapWalks'
+import WalksList from './WalksList'
+import MyMap from './MyMap'
 
 
 class App extends React.Component {
@@ -17,22 +18,26 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    getWalks()
-    .then(walks => {
-      this.setState({walks:walks})
-      this.props.dispatch(saveWalks(walks))
-    })
+    // getWalks()
+    // .then(walks => {
+    //   this.setState({walks:walks})
+      this.props.dispatch(fetchWalks())
+    // })
+
   }
- 
 
   render() {
     return (
       <Router>
         <div className='wrapper'>
             <Header/>
+            <Hero/>
+            {/* <MyMap/> */}
+            <MapWalks />
+            {this.props.pageView == 'profile' ? <Walk/> : <WalksList/>}
 
-            <Route exact path='/' component={() => (<Home />)}/>
-            
+
+            {/* <Route exact path='/' component={() => (<Home />)}/> */}
             {/* <Route path='/walk/:id' component={Walk}/> */}
             {/* <Route path='/walk/:id' component={Walk}/> */}
             <Route path='/walk/:id' render={props => (<Walk walks={this.state.walks} {...props} />)} />
@@ -45,7 +50,8 @@ class App extends React.Component {
 
 function mapStateToProps(globalState) {
   return {
-    walks: globalState.walks
+    walks: globalState.walks,
+    pageView: globalState.pageView,
   }
 }
 

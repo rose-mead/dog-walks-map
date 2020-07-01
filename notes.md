@@ -18,3 +18,6 @@ https://github.com/ReactTraining/react-router/issues/4105
 
 
 https://docs.redux.io/premium/google-maps.html
+
+
+https://www.npmjs.com/package/@react-google-maps/api
