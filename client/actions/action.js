@@ -1,4 +1,4 @@
-import { getWalks, searchWalks } from "../apis/api"
+import { getWalks, searchWalks, multiSearchWalks } from "../apis/api"
 
 export const ADD_WALK = 'ADD_WALK'
 export const SAVE_WALKS = 'SAVE_WALKS'
@@ -55,8 +55,18 @@ export function saveSearchResults(walks) {
 
 export function fetchSearchResults(difficulty) {
     return dispatch => {
-        console.log("in actions - searching for walks");
         searchWalks(difficulty)
+        .then(walks => {
+            dispatch(saveSearchResults(walks))
+        })
+    }
+}
+
+// [{difficulty: ''},{offLeash: ''}]
+export function fetchMultipleSearchResults(searchTerms) {
+    return dispatch => {
+        console.log("in actions - searching for walks");
+        multiSearchWalks(searchTerms)
         .then(walks => {
             console.log("in actions - saving search results");
             dispatch(saveSearchResults(walks))

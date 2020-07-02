@@ -1,24 +1,37 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchSearchResults } from '../actions/action'
+import { fetchSearchResults, fetchMultipleSearchResults } from '../actions/action'
 
 
 class Form extends React.Component {
 
   state = {
     searchTerm: [],
+    searchTerms: {difficulty: '',off_leash: ''},
+    // searchTerms: [{difficulty: ''},{off_leash: ''}],
+    difficulty: '',
+    offLeash: ''
   }
 
   handleChange = (event) => {
+      let newSearchTerms = this.state.searchTerms
+      newSearchTerms[event.target.name] = event.target.value
     this.setState({
-        searchTerm: event.target.value
+        searchTerms: newSearchTerms
+        
+       
+        // searchTerms: newArray.map(object => {
+        //     object[event.target.name] = event.target.value
+        //     return object
+        // })
     })
+
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log(this.state.searchTerm)
     this.props.dispatch(fetchSearchResults(this.state.searchTerm))
+    this.props.dispatch(fetchMultipleSearchResults(this.state.searchTerms))
   }
 
   render() {
@@ -26,16 +39,26 @@ class Form extends React.Component {
     return<div>
         <form onSubmit={this.handleSubmit}>
             <label>
-                <input type='radio' name='name' value='easy' onChange={this.handleChange}/>
+                <input type='radio' name='difficulty' value='easy' onChange={this.handleChange}/>
                 Easy
             </label>
             <label>
-                <input type='radio' name='name' value='medium' onChange={this.handleChange}/>
+                <input type='radio' name='difficulty' value='medium' onChange={this.handleChange}/>
                 Medium
             </label>
             <label>
-                <input type='radio' name='name' value='hard' onChange={this.handleChange}/>
+                <input type='radio' name='difficulty' value='hard' onChange={this.handleChange}/>
                 Hard
+            </label>
+
+            <br></br>
+            <label>
+                <input type='radio' name='off_leash' value='false' onChange={this.handleChange}/>
+                On leash
+            </label>
+            <label>
+                <input type='radio' name='off_leash' value='true' onChange={this.handleChange}/>
+                Off leash
             </label>
             <input type='submit' value='Search'/>
         </form>

@@ -26,3 +26,7 @@ https://www.npmjs.com/package/@react-google-maps/api
 Examples
 
 http://nzwalksinfo.co.nz/tracks/2727-wairio-stop-bank-track
+
+https://designmodo.com/maps-websites/
+
+https://www.doc.govt.nz/parks-and-recreation/places-to-go/waikato/

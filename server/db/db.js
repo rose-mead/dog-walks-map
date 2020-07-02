@@ -32,8 +32,25 @@ function getSearchResults(difficulty, db = connection) {
     })
 }
 
+// [{difficulty: ''},{offLeash: ''}]
+function getMultiSearchResults(searchTerms, db = connection) {
+    
+    // let arrayOfKeys = Object.keys(searchTerms) /* [difficulty, offLeash] */ 
+    // console.log(arrayOfKeys[0], arrayOfKeys[0])
+
+    return db('walks').where(searchTerms)
+    .then(walks => {
+        return walks.map(walk => {
+            walk.coordinates = JSON.parse(walk.coordinates)
+            console.log("in DB func", walk)
+            return walk
+        })
+    })
+}
+
 module.exports = {
     getWalks, 
     getWalk,
-    getSearchResults
+    getSearchResults,
+    getMultiSearchResults
 }

@@ -21,3 +21,17 @@ export function searchWalks(difficulty) {
         return response.body
     })
 }
+
+// [{difficulty: '', offLeash: ''}]
+
+export function multiSearchWalks(searchTerms) {
+
+    // const query = new URLSearchParams({difficulty: '', offLeash: ''}).toString()
+    console.log(query)
+    return request
+    .get(`/search/${query}`)
+    .then(response => {
+        console.log('in api', response)
+        return response.body
+    })
+}

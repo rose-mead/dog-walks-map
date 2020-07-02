@@ -38,6 +38,22 @@ router.get('/search/:difficulty', (req, res) => {
       })
 })
 
+router.get('/multisearch/:query', (req, res) => {
+    const query = new URLSearchParams({difficulty: '', offLeash: ''}).toString()
+    console.log('encoded',query)
+    console.log('decoded',Object.fromEntries(query))
+    db.getMultiSearchResults(req.params.query)
+    .then(walk => {
+        res.json(walk)
+        console.log('in routes', walk);
+        
+    })
+    .catch(err => {
+        console.error(err)
+        res.status(500).json({ message: 'It broke' })
+      })
+})
+
 
 
 module.exports = router
