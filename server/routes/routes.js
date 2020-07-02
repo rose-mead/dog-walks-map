@@ -39,10 +39,12 @@ router.get('/search/:difficulty', (req, res) => {
 })
 
 router.get('/multisearch/:query', (req, res) => {
-    const query = new URLSearchParams({difficulty: '', offLeash: ''}).toString()
-    console.log('encoded',query)
-    console.log('decoded',Object.fromEntries(query))
-    db.getMultiSearchResults(req.params.query)
+    // const result = new URLSearchParams({difficulty: 'easy', offLeash: 'true'}).toString()
+    // console.log(result)
+    const query = req.params.query
+    const parsedQuery = JSON.parse('{"' + decodeURI(query.replace(/&/g, "\",\"").replace(/=/g,"\":\"")) + '"}')
+
+    db.getMultiSearchResults(parsedQuery)
     .then(walk => {
         res.json(walk)
         console.log('in routes', walk);
