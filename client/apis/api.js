@@ -25,11 +25,12 @@ export function searchWalks(difficulty) {
 // [{difficulty: '', offLeash: ''}]
 
 export function multiSearchWalks(searchTerms) {
+    const query = new URLSearchParams(searchTerms)
 
     // const query = new URLSearchParams({difficulty: '', offLeash: ''}).toString()
-    console.log(query)
+    // console.log(query)
     return request
-    .get(`/search/${query}`)
+    .get(`/multisearch/${query}`)
     .then(response => {
         console.log('in api', response)
         return response.body

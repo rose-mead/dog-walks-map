@@ -65,10 +65,8 @@ export function fetchSearchResults(difficulty) {
 // [{difficulty: ''},{offLeash: ''}]
 export function fetchMultipleSearchResults(searchTerms) {
     return dispatch => {
-        console.log("in actions - searching for walks");
         multiSearchWalks(searchTerms)
         .then(walks => {
-            console.log("in actions - saving search results");
             dispatch(saveSearchResults(walks))
         })
     }

@@ -47,7 +47,7 @@ router.get('/multisearch/:query', (req, res) => {
     db.getMultiSearchResults(parsedQuery)
     .then(walk => {
         res.json(walk)
-        console.log('in routes', walk);
+        // console.log('in routes', walk);
         
     })
     .catch(err => {

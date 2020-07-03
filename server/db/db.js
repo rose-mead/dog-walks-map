@@ -26,7 +26,7 @@ function getSearchResults(difficulty, db = connection) {
     .then(walks => {
         return walks.map(walk => {
             walk.coordinates = JSON.parse(walk.coordinates)
-            console.log("in DB func", walk)
+            // console.log("in DB func", walk)
             return walk
         })
     })
@@ -34,15 +34,17 @@ function getSearchResults(difficulty, db = connection) {
 
 // [{difficulty: ''},{offLeash: ''}]
 function getMultiSearchResults(searchTerms, db = connection) {
-    
-    // let arrayOfKeys = Object.keys(searchTerms) /* [difficulty, offLeash] */ 
-    // console.log(arrayOfKeys[0], arrayOfKeys[0])
 
-    return db('walks').where(searchTerms)
+    
+    console.log(searchTerms)
+    const distance = JSON.parse(searchTerms.distance)
+    delete searchTerms.distance
+    
+    return db('walks').whereBetween('distance', distance).where(searchTerms)
     .then(walks => {
         return walks.map(walk => {
             walk.coordinates = JSON.parse(walk.coordinates)
-            console.log("in DB func", walk)
+            // console.log("in DB func", walk)
             return walk
         })
     })
