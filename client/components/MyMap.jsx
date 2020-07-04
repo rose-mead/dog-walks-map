@@ -4,7 +4,7 @@ import { Marker } from '@react-google-maps/api';
 import { InfoWindow } from '@react-google-maps/api';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { selectedWalk } from '../actions/action'
+import { selectedWalk, pageView } from '../actions/action'
 
 
 const containerStyle = {
@@ -45,12 +45,13 @@ class MyMap extends Component {
       // activeMarker: marker,
       showingInfoWindow: true
     })
-
-
-
     this.props.dispatch(selectedWalk(walk))
-    // this.props.dispatch(pageView('profile'))
+  }
 
+  handleCloseClick = () => {
+    this.setState({
+      showingInfoWindow: false
+    })
   }
 
 
@@ -83,11 +84,14 @@ class MyMap extends Component {
       position={this.currentPosition()}
       visible={this.state.showingInfoWindow}
       selectedWalk={this.props.selectedWalk.name}
+      onCloseClick={this.handleCloseClick}
     >
       <div style={infoWindowStyle}>
         <h3>{this.props.selectedWalk.name}</h3>
         <p>{this.props.selectedWalk.location}</p>
-        <Link to={`/walk/${this.props.selectedWalk.id}`}>View details</Link>
+        {/* <Link to={`/walk/${this.props.selectedWalk.id}`}>View details</Link> */}
+        <button onClick={() => this.props.dispatch(pageView('profile'))}>View details</button>
+
       </div>
     </InfoWindow>
   }

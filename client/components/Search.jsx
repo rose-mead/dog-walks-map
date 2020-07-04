@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchSearchResults, fetchMultipleSearchResults } from '../actions/action'
+import { fetchSearchResults, fetchMultipleSearchResults, pageView } from '../actions/action'
 
 
-class Form extends React.Component {
+class Search extends React.Component {
 
   state = {
     searchTerm: [],
@@ -11,6 +11,10 @@ class Form extends React.Component {
     // searchTerms: {difficulty: '',off_leash: ''},
     difficulty: '',
     offLeash: ''
+  }
+
+  handleClick = () => {
+    this.props.dispatch(pageView('home'))
   }
 
   handleChange = (event) => {
@@ -36,7 +40,10 @@ class Form extends React.Component {
 
   render() {
 
-    return<div>
+    return<div className='content-container'>
+            <div className='content'>
+            <button className='exit' onClick={this.handleClick}>X</button>
+
         <form onSubmit={this.handleSubmit}>
             <label>
                 <input type='radio' name='difficulty' value='easy' onChange={this.handleChange}/>
@@ -77,6 +84,7 @@ class Form extends React.Component {
             <input type='submit' value='Search'/>
         </form>
     </div> 
+    </div>
   }
 }
 
@@ -87,7 +95,7 @@ function mapStateToProps(globalState) {
   }
 }
 
-export default connect(mapStateToProps)(Form)
+export default connect(mapStateToProps)(Search)
 
 
 

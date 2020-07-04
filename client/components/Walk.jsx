@@ -3,6 +3,7 @@ import MapWalk from './MapWalk'
 import { getWalks, getWalk } from '../apis/api'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { pageView } from '../actions/action'
 
 class Walk extends React.Component {
 
@@ -13,7 +14,7 @@ class Walk extends React.Component {
   }
 
   handleClick = () => {
-    this.setState({exit: true})
+    this.props.dispatch(pageView('home'))
   }
 
 

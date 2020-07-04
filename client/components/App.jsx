@@ -10,7 +10,7 @@ import MapWalks from './MapWalks'
 import WalksList from './WalksList'
 import MyMap from './MyMap'
 import Home from './Home'
-import Form from './Form'
+import Search from './Search'
 
 
 class App extends React.Component {
@@ -32,12 +32,14 @@ class App extends React.Component {
         <div className='wrapper'>
             <Header/>
             <MyMap/>
-            <Form/>
 
-            <Route exact path='/' component={Home} />
+            {/* <Route exact path='/' component={Home} /> */}
            
 
-            {/* {this.props.pageView == 'profile' ? <Walk/> : <WalksList/>} */}
+            {this.props.pageView == 'profile' && <Walk/>}
+            {this.props.pageView == 'all-walks' && <WalksList/>}
+            {this.props.pageView == 'search' && <Search/>}
+
             {/* <Route exact path='/' component={() => (<Home />)}/> */}
             {/* <Route path='/walk/:id' component={Walk}/> */}
             {/* <Route path='/walk/:id' component={Walk}/> */}
@@ -53,7 +55,7 @@ function mapStateToProps(globalState) {
   return {
     walks: globalState.walks,
     pageView: globalState.pageView,
-    target: globatState.target,
+    target: globalState.target,
   }
 }
 
