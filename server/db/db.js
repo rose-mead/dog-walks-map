@@ -21,7 +21,38 @@ function getWalk(id, db = connection) {
     })
 }
 
+function getSearchResults(difficulty, db = connection) {
+    return db('walks').where('difficulty', difficulty)
+    .then(walks => {
+        return walks.map(walk => {
+            walk.coordinates = JSON.parse(walk.coordinates)
+            // console.log("in DB func", walk)
+            return walk
+        })
+    })
+}
+
+// [{difficulty: ''},{offLeash: ''}]
+function getMultiSearchResults(searchTerms, db = connection) {
+
+    
+    console.log(searchTerms)
+    const distance = JSON.parse(searchTerms.distance)
+    delete searchTerms.distance
+    
+    return db('walks').whereBetween('distance', distance).where(searchTerms)
+    .then(walks => {
+        return walks.map(walk => {
+            walk.coordinates = JSON.parse(walk.coordinates)
+            // console.log("in DB func", walk)
+            return walk
+        })
+    })
+}
+
 module.exports = {
     getWalks, 
-    getWalk
+    getWalk,
+    getSearchResults,
+    getMultiSearchResults
 }
