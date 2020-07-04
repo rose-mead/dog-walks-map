@@ -122,7 +122,8 @@ function mapStateToProps(globalState) {
   return {
     walks: globalState.walks,
     selectedWalk: globalState.selectedWalk,
-    pageView: globalState.pageView
+    pageView: globalState.pageView,
+    searchedWalk: globalState.searchedWalk,
   }
 }
 

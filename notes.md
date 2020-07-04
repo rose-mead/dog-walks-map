@@ -30,3 +30,6 @@ http://nzwalksinfo.co.nz/tracks/2727-wairio-stop-bank-track
 https://designmodo.com/maps-websites/
 
 https://www.doc.govt.nz/parks-and-recreation/places-to-go/waikato/
+
+
+https://webdesign.tutsplus.com/tutorials/how-to-build-a-filtering-component-in-pure-css--cms-33111

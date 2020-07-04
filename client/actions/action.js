@@ -58,6 +58,7 @@ export function fetchSearchResults(difficulty) {
         searchWalks(difficulty)
         .then(walks => {
             dispatch(saveSearchResults(walks))
+            // dispatch(saveSearchResults(walks))
         })
     }
 }
@@ -67,7 +68,7 @@ export function fetchMultipleSearchResults(searchTerms) {
     return dispatch => {
         multiSearchWalks(searchTerms)
         .then(walks => {
-            dispatch(saveSearchResults(walks))
+            dispatch(saveWalks(walks))
         })
     }
 }

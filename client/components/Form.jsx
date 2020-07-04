@@ -73,6 +73,7 @@ class Form extends React.Component {
                 <input type='radio' name='distance' value='[10,20]' onChange={this.handleChange}/>
                 10+km
             </label>
+            
             <input type='submit' value='Search'/>
         </form>
     </div> 
