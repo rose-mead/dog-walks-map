@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import {pageView} from '../actions/action'
+import {pageView, searchVisible} from '../actions/action'
 
 class Header extends React.Component  {
 
@@ -10,12 +10,13 @@ class Header extends React.Component  {
     }
 
     handleSearchClick = () => {
-        this.props.dispatch(pageView('search'))
+        this.props.dispatch(searchVisible(true))
     }
 
     render() {
         return <header className="page-header">
         <nav>
+            <div className='title'>Dog Walks</div>
             <div>Home</div>
             <div><button onClick={this.handleClick}>All walks</button></div>
             <div><button onClick={this.handleSearchClick}>Search</button></div>

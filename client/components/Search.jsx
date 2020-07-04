@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchSearchResults, fetchMultipleSearchResults, pageView } from '../actions/action'
+import {fetchSearchResults, fetchMultipleSearchResults, pageView, searchVisible } from '../actions/action'
 
 
 class Search extends React.Component {
@@ -14,7 +14,7 @@ class Search extends React.Component {
   }
 
   handleClick = () => {
-    this.props.dispatch(pageView('home'))
+    this.props.dispatch(searchVisible(false))
   }
 
   handleChange = (event) => {
@@ -40,7 +40,7 @@ class Search extends React.Component {
 
   render() {
 
-    return<div className='content-container'>
+    return<div className='content-container search'>
             <div className='content'>
             <button className='exit' onClick={this.handleClick}>X</button>
 

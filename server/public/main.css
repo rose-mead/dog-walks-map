@@ -114,15 +114,24 @@ li {
   right: 0;
 }
 
+.search {
+  left: 0;
+}
+
 .content {
   width: 400px;
   background-color: lavender;
   padding: 70px 20px;
-  height: 400px;
+  height: 100vh;
 }
 
 button.exit{
   border-radius: 0;
+}
+
+.title {
+  position: absolute;
+  left: 10px;
 }
 
 

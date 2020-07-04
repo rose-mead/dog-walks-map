@@ -5,6 +5,7 @@ export const SAVE_WALKS = 'SAVE_WALKS'
 export const SELECTED_WALK = 'SELECTED_WALK'
 export const NAVIGATE = 'NAVIGATE'
 export const SEARCH_WALK = 'SEARCH_WALK'
+export const SEARCH = 'SEARCH'
 
 
 
@@ -32,6 +33,13 @@ export function selectedWalk(walk) {
 export function pageView(target) {
     return {
         type: 'NAVIGATE',
+        target: target
+    }
+}
+
+export function searchVisible(target) {
+    return {
+        type: 'SEARCH',
         target: target
     }
 }

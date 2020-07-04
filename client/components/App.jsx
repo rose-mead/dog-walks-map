@@ -38,7 +38,7 @@ class App extends React.Component {
 
             {this.props.pageView == 'profile' && <Walk/>}
             {this.props.pageView == 'all-walks' && <WalksList/>}
-            {this.props.pageView == 'search' && <Search/>}
+            {this.props.searchVisible && <Search/>}
 
             {/* <Route exact path='/' component={() => (<Home />)}/> */}
             {/* <Route path='/walk/:id' component={Walk}/> */}
@@ -56,6 +56,7 @@ function mapStateToProps(globalState) {
     walks: globalState.walks,
     pageView: globalState.pageView,
     target: globalState.target,
+    searchVisible: globalState.searchVisible
   }
 }
 
