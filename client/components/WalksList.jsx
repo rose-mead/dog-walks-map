@@ -15,12 +15,15 @@ function WalksList(props) {
 
 
   return (
-    <div className='walks-list'>
-      <h3>List of all walks:</h3>
-      <ul>
-        {listItems}
-      </ul>
+    <div className='content-container'>
+      <div className='content'>
+        <h3>List of all walks:</h3>
+        <ul>
+          {listItems}
+        </ul>
+      </div>
     </div>
+   
   )
 
 

@@ -87,6 +87,7 @@ li {
 .walk-details p{
   display:inline-block;
   margin-right: 10px;
+
 }
 
 
@@ -107,7 +108,22 @@ li {
 }
 
 
+.content-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
+.content {
+  width: 400px;
+  background-color: lavender;
+  padding: 70px 20px;
+  height: 400px;
+}
+
+button.exit{
+  border-radius: 0;
+}
 
 
 /* From Charlottes web example */

@@ -53,6 +53,7 @@ function mapStateToProps(globalState) {
   return {
     walks: globalState.walks,
     pageView: globalState.pageView,
+    target: globatState.target,
   }
 }
 

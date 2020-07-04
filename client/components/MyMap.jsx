@@ -31,7 +31,7 @@ class MyMap extends Component {
     activeMarker: {},
     selectedPlace: { walk: '' },
     markers: [],
-    marker: {}
+    marker: {},
   }
 
   onLoad = marker => {
