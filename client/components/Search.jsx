@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchMultipleSearchResults, searchVisible } from '../actions/action'
+import { fetchMultipleSearchResults, searchVisible, pageView } from '../actions/action'
 
 
 class Search extends React.Component {
@@ -26,6 +26,8 @@ class Search extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.dispatch(fetchMultipleSearchResults(this.state.searchTerms))
+    this.props.dispatch(pageView('search-results'))
+
   }
 
   render() {

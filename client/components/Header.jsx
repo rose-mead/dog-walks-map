@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import {pageView, searchVisible} from '../actions/action'
+import {pageView, searchVisible, fetchWalks} from '../actions/action'
 
 class Header extends React.Component  {
 
     handleClick = () => {
+        this.props.dispatch(fetchWalks())
         this.props.dispatch(pageView('all-walks'))
     }
 

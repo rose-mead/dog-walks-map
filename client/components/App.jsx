@@ -6,6 +6,7 @@ import WalksList from './WalksList'
 import MyMap from './MyMap'
 import Search from './Search'
 import Header from './Header'
+import SearchedWalksList from './SearchedWalksList'
 
 class App extends React.Component {
 
@@ -25,6 +26,7 @@ class App extends React.Component {
 
             {this.props.pageView == 'profile' && <Walk/>}
             {this.props.pageView == 'all-walks' && <WalksList/>}
+            {this.props.pageView == 'search-results' && <SearchedWalksList/>}
             {this.props.searchVisible && <Search/>}
 
         </div>

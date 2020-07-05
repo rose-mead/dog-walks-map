@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { Marker } from '@react-google-maps/api';
 import { InfoWindow } from '@react-google-maps/api';
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { selectedWalk, pageView } from '../actions/action'
 
@@ -55,7 +54,7 @@ class MyMap extends Component {
       this.setState({
         showingInfoWindow: false,
       })
-      // this.props.dispatch(pageView('home'))
+      this.props.dispatch(pageView('home'))
     }
   }
 

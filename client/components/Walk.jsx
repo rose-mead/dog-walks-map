@@ -32,8 +32,8 @@ class Walk extends React.Component {
           </div>
           <p>{this.props.walk.description}</p>
 
-          <Link to={'/'}>Home</Link>
-          {this.state.exit && <Redirect to='/'/>}
+          {/* <Link to={'/'}>Home</Link> */}
+          {/* {this.state.exit && <Redirect to='/'/>} */}
         </div>
         
       </div>
