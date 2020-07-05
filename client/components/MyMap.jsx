@@ -3,7 +3,7 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { Marker } from '@react-google-maps/api';
 import { InfoWindow } from '@react-google-maps/api';
 import { connect } from 'react-redux'
-import { selectedWalk, pageView } from '../actions/action'
+import { selectedWalk, pageView, searchVisible } from '../actions/action'
 
 
 const containerStyle = {
@@ -55,7 +55,12 @@ class MyMap extends Component {
         showingInfoWindow: false,
       })
       this.props.dispatch(pageView('home'))
+      this.props.dispatch(searchVisible(false))
     }
+    this.props.dispatch(pageView('home'))
+    this.props.dispatch(searchVisible(false))
+
+
   }
 
   currentPosition = () => {

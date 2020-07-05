@@ -112,6 +112,8 @@ li {
   position: absolute;
   top: 0;
   right: 0;
+  width: 400px;
+
 }
 
 .search {
@@ -119,7 +121,6 @@ li {
 }
 
 .content {
-  width: 400px;
   background-color: lavender;
   padding: 70px 20px;
   height: 100vh;
