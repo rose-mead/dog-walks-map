@@ -45,44 +45,37 @@ class Search extends React.Component {
             <button className='exit' onClick={this.handleClick}>X</button>
 
         <form onSubmit={this.handleSubmit}>
-            <label>
-                <input type='radio' name='difficulty' value='easy' onChange={this.handleChange}/>
-                Easy
-            </label>
-            <label>
-                <input type='radio' name='difficulty' value='medium' onChange={this.handleChange}/>
-                Medium
-            </label>
-            <label>
-                <input type='radio' name='difficulty' value='hard' onChange={this.handleChange}/>
-                Hard
-            </label>
+          
+        <div className="filter">
+            <input type='radio' name='difficulty' value='easy' onChange={this.handleChange} id='easy'/>
+            <label htmlFor="easy">Easy</label>
+            <input type='radio' name='difficulty' value='medium' onChange={this.handleChange} id='medium'/>
+            <label htmlFor="medium">Medium</label>
+            <input type='radio' name='difficulty' value='hard' onChange={this.handleChange} id='hard'/>
+            <label htmlFor="hard">Hard</label>
+            <br></br>
 
+            <input type='radio' name='off_leash' value='false' onChange={this.handleChange} id='on_leash'/>
+            <label htmlFor="on_leash">On leash</label>
+            <input type='radio' name='off_leash' value='true' onChange={this.handleChange} id='off_leash'/>
+            <label htmlFor="off_leash">Off leash</label>
+         
             <br></br>
-            <label>
-                <input type='radio' name='off_leash' value='false' onChange={this.handleChange}/>
-                On leash
-            </label>
-            <label>
-                <input type='radio' name='off_leash' value='true' onChange={this.handleChange}/>
-                Off leash
-            </label>
-            <br></br>
-            <label>
-                <input type='radio' name='distance' value='[0,5]' onChange={this.handleChange}/>
-                Under 5km
-            </label>
-            <label>
-                <input type='radio' name='distance' value='[5,10]' onChange={this.handleChange}/>
-                5-10km
-            </label>
-            <label>
-                <input type='radio' name='distance' value='[10,20]' onChange={this.handleChange}/>
-                10+km
-            </label>
-            
+            <input type='radio' name='distance' value='[0,5]' onChange={this.handleChange} id='under_5'/>
+            <label htmlFor="under_5">Under 5km</label>
+            <input type='radio' name='distance' value='[5,10]' onChange={this.handleChange} id='5_10'/>
+            <label htmlFor="5_10">5-10km</label>
+            <input type='radio' name='distance' value='[10,20]' onChange={this.handleChange} id='10+'/>
+            <label htmlFor="10+">10+km</label>
+
             <input type='submit' value='Search'/>
+
+    
+            
+            </div>
         </form>
+
+
     </div> 
     </div>
   }
