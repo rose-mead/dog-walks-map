@@ -9,7 +9,7 @@ import { selectedWalk, pageView } from '../actions/action'
 
 const containerStyle = {
   width: '100%',
-  height: '400px'
+  height: '100vh'
 }
 
 const center = {
@@ -28,9 +28,6 @@ class MyMap extends Component {
 
   state = {
     showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: { walk: '' },
-    markers: [],
     marker: {},
   }
 
@@ -41,8 +38,6 @@ class MyMap extends Component {
 
   onMarkerClick = (walk, props, e) => {
     this.setState({
-      selectedPlace: walk,
-      // activeMarker: marker,
       showingInfoWindow: true
     })
     this.props.dispatch(selectedWalk(walk))
@@ -59,7 +54,6 @@ class MyMap extends Component {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null,
       })
       // this.props.dispatch(pageView('home'))
     }
@@ -89,18 +83,14 @@ class MyMap extends Component {
       <div style={infoWindowStyle}>
         <h3>{this.props.selectedWalk.name}</h3>
         <p>{this.props.selectedWalk.location}</p>
-        {/* <Link to={`/walk/${this.props.selectedWalk.id}`}>View details</Link> */}
         <button onClick={() => this.props.dispatch(pageView('profile'))}>View details</button>
-
       </div>
     </InfoWindow>
   }
 
   render() {
     return (
-      <LoadScript
-        googleMapsApiKey="AIzaSyAKX1hkWU08ESdis7RSdoDpGi9LJXSQyjE"
-      >
+      <LoadScript googleMapsApiKey="AIzaSyAKX1hkWU08ESdis7RSdoDpGi9LJXSQyjE">
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
@@ -108,13 +98,10 @@ class MyMap extends Component {
           onClick={this.onMapClicked}
         >
 
-          { /* Child components, such as markers, info windows, etc. */}
+          { /* Child components, such as , info windows, etc. */}
 
           {this.props.walks && this.displayMarkers()}
-
           {this.state.showingInfoWindow && this.displayInfoWindow()}
-
-          <></>
         </GoogleMap>
       </LoadScript>
     )
@@ -126,7 +113,6 @@ function mapStateToProps(globalState) {
   return {
     walks: globalState.walks,
     selectedWalk: globalState.selectedWalk,
-    pageView: globalState.pageView,
     searchedWalk: globalState.searchedWalk,
   }
 }

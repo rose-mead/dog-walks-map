@@ -1,5 +1,4 @@
 import React from 'react'
-import MapWalk from './MapWalk'
 import { getWalks, getWalk } from '../apis/api'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'

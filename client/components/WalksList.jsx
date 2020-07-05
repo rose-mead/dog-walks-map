@@ -1,5 +1,4 @@
 import React from 'react'
-import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { pageView, selectedWalk } from '../actions/action'
 
@@ -15,24 +14,15 @@ function WalksList(props) {
       props.dispatch(pageView('profile'))
 
     }
-  
- 
-
-
 
   const listItems = props.walks.map(walk => {
     return <li key={walk.id}><a href="#" onClick={(e)=>handleClick(walk, e)}>{walk.name} </a></li>
-    // return <a href={walk.name}>{walk.name}</a>
   })
 
   const handleExit = () => {
     props.dispatch(pageView('home'))
 
-
   }
-
-
-
 
   return (
     <div className='content-container'>
@@ -46,7 +36,6 @@ function WalksList(props) {
     </div>
    
   )
-
 
 }
 
