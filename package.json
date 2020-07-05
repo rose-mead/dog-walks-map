@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@react-google-maps/api": "^1.9.7",
+    "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
     "google-map-react": "^1.1.7",
     "google-maps-react": "^2.0.6",

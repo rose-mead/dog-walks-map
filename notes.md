@@ -35,3 +35,11 @@ https://www.doc.govt.nz/parks-and-recreation/places-to-go/waikato/
 https://webdesign.tutsplus.com/tutorials/how-to-build-a-filtering-component-in-pure-css--cms-33111
 
 https://schuylkillriver.org/map/trailhead/port-providence/
+
+
+https://codepen.io/Yooun5/pen/ZqRXQo
+
+https://www.digitalocean.com/community/tutorials/how-to-use-node-js-request-and-cheerio-to-set-up-simple-web-scraping
+
+
+https://api.doc.govt.nz/apis/uuzgg2ahs7/v1/public-tracks-v1
