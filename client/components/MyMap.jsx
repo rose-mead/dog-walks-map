@@ -4,6 +4,7 @@ import { Marker } from '@react-google-maps/api';
 import { InfoWindow } from '@react-google-maps/api';
 import { connect } from 'react-redux'
 import { selectedWalk, pageView, searchVisible } from '../actions/action'
+import { Link } from 'react-router-dom'
 
 
 const containerStyle = {
@@ -88,6 +89,7 @@ class MyMap extends Component {
         <h3>{this.props.selectedWalk.name}</h3>
         <p>{this.props.selectedWalk.location}</p>
         <button onClick={() => this.props.dispatch(pageView('profile'))}>View details</button>
+        <Link to={`/walk/${this.props.selectedWalk.id}`}>View details</Link>
       </div>
     </InfoWindow>
   }

@@ -7,6 +7,7 @@ import MyMap from './MyMap'
 import Search from './Search'
 import Header from './Header'
 import SearchedWalksList from './SearchedWalksList'
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
 
 class App extends React.Component {
 
@@ -21,6 +22,7 @@ class App extends React.Component {
   render() {
     return (
         <div className='wrapper'>
+          <Router>
             <Header/>
             <MyMap/>
 
@@ -28,7 +30,8 @@ class App extends React.Component {
             {this.props.pageView == 'all-walks' && <WalksList/>}
             {this.props.pageView == 'search-results' && <SearchedWalksList/>}
             {this.props.searchVisible && <Search/>}
-
+            <Route path='/walk/:id' render={props => (<Walk walks={this.state.walks} {...props} />)} />
+            </Router>
         </div>
     )
   }

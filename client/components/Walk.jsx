@@ -14,6 +14,8 @@ class Walk extends React.Component {
 
   handleClick = () => {
     this.props.dispatch(pageView('home'))
+   
+    
   }
 
 
@@ -21,7 +23,9 @@ class Walk extends React.Component {
     return (
       <div className='content-container'>
         <div className='content'>
-            <button className='exit' onClick={this.handleClick}>X</button>
+            {/* <button className='exit' onClick={this.handleClick}>X</button> */}
+            <Link to={`/`}>X</Link>
+
 
           <h3>{this.props.walk.name}</h3>
           <p>{this.props.walk.location}</p>
