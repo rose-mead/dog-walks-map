@@ -12,7 +12,7 @@ exports.seed = function(knex) {
           location: 'Horsham Downs', 
           coordinates: '{"lat":-37.677390, "lng":175.236442}',
           time: '60 min', 
-          distance: 10,
+          distance: 12,
           difficulty: 'easy', 
           off_leash: 'true',
           description: 'An easy lake loop just north of Hamilton with loads of variety for dogs. This track meanders through stands of native trees and grassed areas. A range of different maimais are dotted around the lake – from ramshackle to quite impressive!'
