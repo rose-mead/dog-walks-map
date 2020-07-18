@@ -48,8 +48,7 @@
     "redux-thunk": "^2.3.0",
     "sqlite3": "^4.2.0",
     "superagent": "^5.2.2",
-    "webpack": "^4.43.0",
-
+    "webpack": "^4.43.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
