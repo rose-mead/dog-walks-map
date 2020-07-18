@@ -1,7 +1,7 @@
 
 exports.up = function(knex) {
     return knex.schema.table('walks', function(table) {
-        table.boolean('distance')
+        table.string('distance')
     })
   };
   
