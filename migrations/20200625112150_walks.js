@@ -8,6 +8,8 @@ exports.up = function(knex) {
         table.string('time')
         table.string('difficulty')
         table.string('description')
+        table.string('distance')
+        table.boolean('off_leash')
       })
 };
 
