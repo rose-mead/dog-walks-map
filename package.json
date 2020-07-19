@@ -50,13 +50,11 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "sqlite3": "^4.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "superagent": "^5.2.2",
     "webpack-cli": "^3.3.11",
-    "webpack": "^4.43.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack": "^4.43.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
@@ -67,10 +65,10 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^25.3.0",
     "babel-loader": "^8.1.0",
+    "sqlite3": "^4.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "jest": "^25.3.0",
     "nodemon": "^2.0.4"
- 
   }
 }
