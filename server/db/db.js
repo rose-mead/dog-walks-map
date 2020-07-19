@@ -3,6 +3,7 @@ const config = require('../../knexfile')
 const env = process.env.NODE_ENV || 'development'
 const connection = knex(config[env])
 
+
 function getWalks(db = connection) {
     return db('walks').select()
     .then(walks => {
