@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate-react-webpack",
+  "name": "dog-walks-waikato",
   "version": "0.2.2",
-  "description": "A webpack React starter",
+  "description": "Dog walks Waikato",
   "repository": "https://github.com/dev-academy-challenges/boilerplate-react-webpack.git",
   "main": "server/index.js",
   "author": "EDA",
@@ -9,13 +9,18 @@
   "scripts": {
     "client": "webpack-dev-server --hot --inline",
     "dev": "run-p dev:client dev:server",
+    "watch:client": "webpack --watch",
+    "watch:server": "nodemon --watch server",
     "dev:client": "webpack --watch",
     "dev:server": "nodemon server",
     "start": "run-s build server",
-    "build": "webpack",
+    "build": "webpack && knex migrate:latest",
     "server": "node server",
     "test": "jest --watchAll",
-    "postinstall": "webpack && knex migrate:latest"
+    "h:deploy": "git push heroku master",
+    "h:migrate": "heroku run npx knex migrate:latest",
+    "h:rollback": "heroku run npx knex migrate:rollback",
+    "h:seed": "heroku run npx knex seed:run"
   },
   "babel": {
     "presets": [
@@ -47,6 +52,7 @@
     "redux-thunk": "^2.3.0",
     "sqlite3": "^4.2.0",
     "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "superagent": "^5.2.2",
     "webpack-cli": "^3.3.11",
     "webpack": "^4.43.0",
@@ -64,7 +70,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "jest": "^25.3.0",
-    "nodemon": "^2.0.4",
-    "react-dom": "^16.13.1"
+    "nodemon": "^2.0.4"
+ 
   }
 }
