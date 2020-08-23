@@ -96,7 +96,7 @@ class MyMap extends Component {
 
   render() {
     return (
-      <LoadScript googleMapsApiKey="AIzaSyAKX1hkWU08ESdis7RSdoDpGi9LJXSQyjE">
+      <LoadScript googleMapsApiKey="AIzaSyDnFQNd9Wr-4gMgrinYhXkxkJF5DyvvwrA">
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
