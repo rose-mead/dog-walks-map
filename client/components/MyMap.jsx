@@ -103,7 +103,6 @@ class MyMap extends Component {
 
   render() {
     return (
-      // <LoadScript googleMapsApiKey="AIzaSyDnFQNd9Wr-4gMgrinYhXkxkJF5DyvvwrA">
       <LoadScript googleMapsApiKey={`${GM_API_KEY}`}>
         
         <GoogleMap
