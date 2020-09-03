@@ -1,4 +1,6 @@
 const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack')
+
 
 const path = require('path')
 
@@ -10,6 +12,7 @@ module.exports = {
   },
   mode: "production",
   plugins: [
+    new Dotenv(),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
       DEBUG: false

@@ -6,6 +6,10 @@ import { connect } from 'react-redux'
 import { selectedWalk, pageView, searchVisible } from '../actions/action'
 import { Link } from 'react-router-dom'
 
+const GM_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+
+
+
 
 const containerStyle = {
   width: '100%',
@@ -94,9 +98,14 @@ class MyMap extends Component {
     </InfoWindow>
   }
 
+
+  
+
   render() {
     return (
-      <LoadScript googleMapsApiKey="AIzaSyDnFQNd9Wr-4gMgrinYhXkxkJF5DyvvwrA">
+      // <LoadScript googleMapsApiKey="AIzaSyDnFQNd9Wr-4gMgrinYhXkxkJF5DyvvwrA">
+      <LoadScript googleMapsApiKey={`${GM_API_KEY}`}>
+        
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
