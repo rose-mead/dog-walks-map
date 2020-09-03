@@ -87,6 +87,7 @@ li {
 .walk-details p{
   display:inline-block;
   margin-right: 10px;
+
 }
 
 
@@ -107,7 +108,145 @@ li {
 }
 
 
+.content-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
 
+}
+
+.search {
+  left: 0;
+}
+
+.content {
+  background-color: lavender;
+  padding: 70px 20px;
+  height: 100vh;
+}
+
+button.exit{
+  border-radius: 0;
+}
+
+.title {
+  position: absolute;
+  left: 10px;
+}
+
+/* .input[type="radio" i]{
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  min-width: 50px;
+  cursor: pointer;
+  transition: all 0.1s;
+  display: inline-block;
+  text-align: center;
+  background-color: white;
+  -webkit-appearance: none!important;
+  -moz-appearance: none;
+  appearance: none;
+} */
+
+input[type="radio"]{
+  /* -webkit-appearance: none!important; */
+  left: -9999px;
+  /* display: none; */
+
+}
+
+input[type="radio"]:checked + label{
+  background-color: green;
+}
+
+
+label {
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  border-radius: 2rem;
+  min-width: 50px;
+  line-height: normal;
+  cursor: pointer;
+  transition: all 0.1s;
+  background-color: white;
+  display: inline-block;
+
+}
+
+
+.filter input{
+  display:none; 
+}
+
+.filter input:checked  + label{
+  background-color: #eee;
+}
+
+label:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.filter a {
+  color: #000;
+  font-size: 12px;
+  padding: 3px;
+  text-decoration: none;
+  display: inline-block;
+  width: 100px;
+  height:30px;
+  line-height: 30px;
+  text-align:center;
+}
+.filter a:hover {
+  background-color: #eee;
+}
+.filter a:first-child {
+  border: 1px solid #eee;
+  border-radius: 20px 0 0 20px;
+}
+.filter a:nth-child(2) {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+.filter a:nth-child(3) {
+  border: 1px solid #eee;
+    border-radius: 0 20px 20px 0;
+}
+.active-filter {
+  background-color: #eee;
+}
 
 
 /* From Charlottes web example */

@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { Marker } from '@react-google-maps/api';
 import { InfoWindow } from '@react-google-maps/api';
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { selectedWalk } from '../actions/action'
+import { selectedWalk, pageView, searchVisible } from '../actions/action'
+import { Link } from 'react-router-dom'
+
+const GM_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+
+
 
 
 const containerStyle = {
   width: '100%',
-  height: '400px'
+  height: '100vh'
 }
 
 const center = {
@@ -28,10 +32,7 @@ class MyMap extends Component {
 
   state = {
     showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: { walk: '' },
-    markers: [],
-    marker: {}
+    marker: {},
   }
 
   onLoad = marker => {
@@ -41,16 +42,15 @@ class MyMap extends Component {
 
   onMarkerClick = (walk, props, e) => {
     this.setState({
-      selectedPlace: walk,
-      // activeMarker: marker,
       showingInfoWindow: true
     })
-
-
-
     this.props.dispatch(selectedWalk(walk))
-    // this.props.dispatch(pageView('profile'))
+  }
 
+  handleCloseClick = () => {
+    this.setState({
+      showingInfoWindow: false
+    })
   }
 
 
@@ -58,10 +58,14 @@ class MyMap extends Component {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null,
       })
-      // this.props.dispatch(pageView('home'))
+      this.props.dispatch(pageView('home'))
+      this.props.dispatch(searchVisible(false))
     }
+    this.props.dispatch(pageView('home'))
+    this.props.dispatch(searchVisible(false))
+
+
   }
 
   currentPosition = () => {
@@ -83,20 +87,25 @@ class MyMap extends Component {
       position={this.currentPosition()}
       visible={this.state.showingInfoWindow}
       selectedWalk={this.props.selectedWalk.name}
+      onCloseClick={this.handleCloseClick}
     >
       <div style={infoWindowStyle}>
         <h3>{this.props.selectedWalk.name}</h3>
         <p>{this.props.selectedWalk.location}</p>
+        <button onClick={() => this.props.dispatch(pageView('profile'))}>View details</button>
         <Link to={`/walk/${this.props.selectedWalk.id}`}>View details</Link>
       </div>
     </InfoWindow>
   }
 
+
+  
+
   render() {
     return (
-      <LoadScript
-        googleMapsApiKey="AIzaSyAKX1hkWU08ESdis7RSdoDpGi9LJXSQyjE"
-      >
+      // <LoadScript googleMapsApiKey="AIzaSyDnFQNd9Wr-4gMgrinYhXkxkJF5DyvvwrA">
+      <LoadScript googleMapsApiKey={`${GM_API_KEY}`}>
+        
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
@@ -104,13 +113,10 @@ class MyMap extends Component {
           onClick={this.onMapClicked}
         >
 
-          { /* Child components, such as markers, info windows, etc. */}
+          { /* Child components, such as , info windows, etc. */}
 
           {this.props.walks && this.displayMarkers()}
-
           {this.state.showingInfoWindow && this.displayInfoWindow()}
-
-          <></>
         </GoogleMap>
       </LoadScript>
     )
@@ -122,7 +128,6 @@ function mapStateToProps(globalState) {
   return {
     walks: globalState.walks,
     selectedWalk: globalState.selectedWalk,
-    pageView: globalState.pageView,
     searchedWalk: globalState.searchedWalk,
   }
 }

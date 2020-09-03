@@ -1,17 +1,13 @@
 import React from 'react'
 import Walk from './Walk'
-import { HashRouter as Router, Route, Link } from 'react-router-dom'
-import Hero from './hero'
-import Header from './header'
-import { getWalks } from '../apis/api'
 import { connect } from 'react-redux'
 import { fetchWalks } from '../actions/action'
-import MapWalks from './MapWalks'
 import WalksList from './WalksList'
 import MyMap from './MyMap'
-import Home from './Home'
-import Form from './Form'
-
+import Search from './Search'
+import Header from './Header'
+import SearchedWalksList from './SearchedWalksList'
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
 
 class App extends React.Component {
 
@@ -20,30 +16,23 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-
       this.props.dispatch(fetchWalks())
-
   }
-
 
   render() {
     return (
-      <Router> 
         <div className='wrapper'>
+          <Router>
             <Header/>
             <MyMap/>
-            <Form/>
 
-            <Route exact path='/' component={Home} />
-           
-
-            {/* {this.props.pageView == 'profile' ? <Walk/> : <WalksList/>} */}
-            {/* <Route exact path='/' component={() => (<Home />)}/> */}
-            {/* <Route path='/walk/:id' component={Walk}/> */}
-            {/* <Route path='/walk/:id' component={Walk}/> */}
+            {this.props.pageView == 'profile' && <Walk/>}
+            {this.props.pageView == 'all-walks' && <WalksList/>}
+            {this.props.pageView == 'search-results' && <SearchedWalksList/>}
+            {this.props.searchVisible && <Search/>}
             <Route path='/walk/:id' render={props => (<Walk walks={this.state.walks} {...props} />)} />
+            </Router>
         </div>
-      </Router>
     )
   }
 }
@@ -51,8 +40,8 @@ class App extends React.Component {
 
 function mapStateToProps(globalState) {
   return {
-    walks: globalState.walks,
     pageView: globalState.pageView,
+    searchVisible: globalState.searchVisible
   }
 }
 

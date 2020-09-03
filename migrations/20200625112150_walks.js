@@ -7,7 +7,9 @@ exports.up = function(knex) {
         table.string('coordinates')
         table.string('time')
         table.string('difficulty')
-        table.string('description')
+        table.string('description', 10000)
+        table.string('distance')
+        table.boolean('off_leash')
       })
 };
 

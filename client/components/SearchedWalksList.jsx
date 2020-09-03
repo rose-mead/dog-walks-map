@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { pageView, selectedWalk } from '../actions/action'
 
 
-function WalksList(props) {
+function SearchedWalksList(props) {
 
   
     function handleClick(walk, e) {
@@ -24,13 +24,11 @@ function WalksList(props) {
 
   }
 
-
-
   return (
     <div className='content-container'>
       <div className='content'>
       <button className='exit' onClick={handleExit}>X</button>
-        <h3>List of all walks:</h3>
+        <h3>Searched walks:</h3>
         <ul>
           {listItems}
         </ul>
@@ -47,4 +45,4 @@ function mapStateToProps(globalState) {
   }
 }
 
-export default connect(mapStateToProps)(WalksList)
+export default connect(mapStateToProps)(SearchedWalksList)
